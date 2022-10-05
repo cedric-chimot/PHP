@@ -1,0 +1,9 @@
+h1{
+    text-align: center;
+    text-decoration: underline;
+    color: blue;
+}
+
+form, .afficher_utilisateur{
+    text-align: center;
+}
