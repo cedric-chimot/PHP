@@ -1,8 +1,9 @@
-*{
-    margin-top: 0;
-    padding: 0;
+h1{
+    text-align: center;
+    text-decoration: underline;
+    color: blue;
 }
 
-table {
+form, .afficher_voitures{
     text-align: center;
 }
