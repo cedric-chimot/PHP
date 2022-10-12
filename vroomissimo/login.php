@@ -14,14 +14,14 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($select_user) > 0) {
         $row = mysqli_fetch_assoc($select_user);
 
-        if ($row['Type_user'] == 'admin') {
-            $_SESSION['admin_nom'] = $row['Nom'];
-            $_SESSION['admin_email'] = $row['Email'];
+        if ($row['type_user'] == 'admin') {
+            $_SESSION['admin_nom'] = $row['nom'];
+            $_SESSION['admin_email'] = $row['email'];
             $_SESSION['admin_id'] = $row['ID'];
             header('location:admin_page.php');
-        } elseif ($row['Type_user'] == 'client') {
-            $_SESSION['client_nom'] = $row['Nom'];
-            $_SESSION['client_email'] = $row['Email'];
+        } elseif ($row['type_user'] == 'client') {
+            $_SESSION['client_nom'] = $row['nom'];
+            $_SESSION['client_email'] = $row['email'];
             $_SESSION['client_id'] = $row['ID'];
             header('location:home.php');
         }

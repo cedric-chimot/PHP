@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         if ($password != $cpassword) {
             $message[] = 'Les mots de passe ne correspondent pas !';
         } else {
-            mysqli_query($con, "INSERT INTO `utilisateur`(Nom, Adresse, CP, Ville, Pays, Email, Password, Type_user)
+            mysqli_query($con, "INSERT INTO `utilisateur`(nom, adresse, cp, ville, pays, email, password, type_user)
                             VALUES ('$nom', '$adresse', '$cp', '$ville', '$pays', '$email', '$password', '$user_type')")
                 or die('Echec de la requête');
             $message[] = 'Inscription réussie';

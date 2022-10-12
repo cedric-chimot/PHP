@@ -1,4 +1,4 @@
 <?php
 
-$con = mysqli_connect('localhost', 'cedricCH', 'G5A6veBPQ-ZKp!@F', 'vroomissimo')
+$con = mysqli_connect('localhost', 'Ced02830', 'kNlt@@B[[**VDnKl', 'vroomissimo')
     or die('Echec de la connexion');
