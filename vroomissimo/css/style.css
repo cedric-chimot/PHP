@@ -79,6 +79,14 @@ section{
     transform: rotate(90deg);
 }
 
+.titre{
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    color: var(--noir);
+    font-size: 4rem;
+}
+
 .btn,
 .option-btn,
 .delete-btn,
@@ -90,7 +98,6 @@ section{
     color: var(--blanc);
     font-size: 1.8rem;
     border-radius: .5rem;
-    text-transform: capitalize;
 }
 
 .btn:hover,
@@ -102,6 +109,11 @@ section{
 .white-btn,
 .btn{
     background-color: var(--bleu);
+}
+
+.white-btn:hover{
+    background-color: var(--blanc);
+    color: var(--noir);
 }
 
 .option-btn{
@@ -174,23 +186,319 @@ section{
     text-decoration: underline;
 }
 
+.header .header-1{
+    background-color: var(--bg-clair);
+}
+
+.header .header-1 .flex{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header .header-1 .flex .share a{
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    color: var(--noir);
+}
+
+.header .header-1 .flex .share a:hover{
+    color: var(--bleu);
+}
+
+.header .header-1 .flex p{
+    font-size: 2rem;
+    color: var(--couleur-claire);
+}
+
+.header .header-1 .flex p a{
+    color: var(--bleu);
+}
+
+.header .header-1 .flex p a:hover{
+    text-decoration: underline;
+}
+
+.header .header-2{
+    background-color: var(--blanc);
+    box-shadow: var(--box-shadow);
+}
+
+.header .header-2.active{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.header .header-2 .flex{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header .header-2 .flex #logo{
+    font-size: 3rem;
+    color: var(--bleu);
+}
+
+.header .header-2 .flex #logo:hover{
+    color: var(--rouge);
+}
+
+.header .header-2 .flex .navbar a{
+    margin: 0 1rem;
+    font-size: 2rem;
+    color: var(--couleur-claire);
+}
 
 
+.header .header-2 .flex .navbar a:hover{
+    color: var(--bleu);
+    text-decoration: underline;
+}
 
+.header .header-2 .flex .icons > *{
+    font-size: 2.5rem;
+    color: var(--noir);
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
 
+.header .header-2 .flex .icons > *:hover{
+    color: var(--bleu);
+}
 
+.header .header-2 .flex .user-box{
+    position: absolute;
+    top: 120%; right: 2rem;
+    background-color: var(--blanc);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+    width: 30rem;
+    display: none;
+    animation: fadeIn .2s linear;
+}
 
+.header .header-2 .flex .user-box.active{
+    display: inline-block;
+}
 
+.header .header-2 .flex .user-box p{
+    font-size: 2rem;
+    color: var(--couleur-claire);
+    margin-bottom: 1.5rem;
+}
 
+.header .header-2 .flex .user-box p span{
+    color: var(--bleu);
+}
 
+.header .header-2 .flex .user-box .delete-btn{
+    margin-top: 0;
+}
 
+#menu-btn{
+    display: none;
+}
 
+.home{
+    min-height: 60vh;
+    background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../image/S7-modele--peugeot-308.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.home .content{
+    text-align: center;
+    width: 70rem;
+}
 
+.home .content h3{
+    font-size: 3.8rem;
+    color: var(--blanc);
+    text-transform: uppercase;
+}
 
+.home .content p{
+    font-size: 2rem;
+    color: var(--blanc-clair);
+    padding: 1rem 0;
+    line-height: 2;
+}
 
+.annonces .box-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 30rem);
+    align-items: flex-start;
+    gap: 1.5rem;
+    justify-content: center;
+}
 
+.annonces .box-container .box{
+    border-radius: .5rem;
+    background-color: var(--blanc);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+}
 
+.annonces .box-container img{
+    max-width: 100%;
+}
+
+.annonces .box-container span{
+    color: var(--noir);
+}
+
+.annonces .box-container .marque,
+.annonces .box-container .modele,
+.annonces .box-container .km,
+.annonces .box-container .carburant,
+.annonces .box-container .etat,
+.annonces .box-container .description{
+    padding: 1rem 0;
+    font-size: 1.8rem;
+    color: var(--bleu);
+}
+
+.annonces .box-container .prix{
+    font-size: 2.2rem;
+    color: var(--rouge);
+    padding: 1rem 0;
+}
+
+.annonces .box-container .box .quantite{
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    border-radius: .5rem;
+    border: var(--border);
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+.a_propos .flex{
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.a_propos .flex .image{
+    flex: 1 1 40rem;
+}
+
+.a_propos .flex .image img{
+    width: 100%;
+}
+
+.a_propos .flex .content{
+    flex: 1 1 40rem;
+    padding: 3.3rem;
+    background-color: var(--bg-clair);
+}
+
+.a_propos .flex .content h3{
+    font-size: 2.5rem;
+    color: var(--noir);
+    text-transform: uppercase;
+}
+
+.a_propos .flex .content p{
+    padding: 1rem 0;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    color: var(--couleur-claire);
+}
+
+.home-contact{
+    background-color: var(--noir);
+}
+
+.home-contact .content{
+    max-width: 50rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.home-contact .content h3{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: var(--blanc);
+}
+
+.home-contact .content p{
+    padding: 1rem 0;
+    line-height: 1.5;
+    color: var(--blanc-clair);
+    font-size: 1.6rem;
+}
+
+.footer{
+    background-color: var(--bg-clair);
+}
+
+.footer .box-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+}
+
+.footer .box-container .box h3{
+    color: var(--noir);
+    font-size: 2rem;
+    padding-bottom: 2rem;
+}
+
+.footer .box-container .box p,
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.7rem;
+    color: var(--couleur-claire);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box p i,
+.footer .box-container .box a i{
+    color: var(--bleu);
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover{
+    color: var(--bleu);
+    text-decoration: underline;
+}
+
+.footer .credit{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--couleur-claire);
+    border-top: var(--border);
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+
+.footer .credit span{
+    color: var(--bleu);
+}
 
 /* media queries */
 @media (max-width: 991px){
@@ -199,8 +507,41 @@ section{
     }
 }
 
+@media (max-width: 768px){
+    #menu-btn{
+        display: inline-block;
+    }
+
+    .header .header-2 .flex .navbar{
+        position: absolute;
+        top: 99%; left: 0; right: 0;
+        background-color: var(--blanc);
+        border-top: var(--border);
+        border-bottom: var(--border);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .header-2 .flex .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .header-2 .flex .navbar a{
+        display: block;
+        font-size: 2.5rem;
+        margin: 2rem;
+    }
+
+    .footer .box-container .box h3{
+        text-align: center;
+    }
+}
+
 @media (max-width: 450px){
     html{
         font-size: 50%;
+    }
+
+    .footer .box-container .box h3{
+        text-align: center;
     }
 }

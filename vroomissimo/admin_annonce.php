@@ -58,7 +58,6 @@ if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
     $delete_image_query = mysqli_query($con, "SELECT image FROM `annonce` WHERE id = '$delete_id'") or die('Echec de la requête');
     $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
-    unlink('image/' . $fetch_delete_image['image']);
     mysqli_query($con, "DELETE FROM `annonce` WHERE id = '$delete_id'") or die('Echec de la requête');
     header('location:admin_annonce.php');
 }
@@ -213,6 +212,7 @@ if (isset($_POST['update_annonce'])) {
                     }
                 }
             } else {
+                echo '<script>document.querySelector(".edit-annonce-form").style.display = "none";</script>';
             }
             ?>
         </div>

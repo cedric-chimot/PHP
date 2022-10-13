@@ -15,3 +15,8 @@ window.onscroll = () =>{
     navbar.classList.remove('active');
     account.classList.remove('active');
 }
+
+document.querySelector('#close-update').onclick = () => {
+    document.querySelector('.edit-annonce-form').style.display = 'none';
+    window.location.href = 'admin_annonce.php';
+}

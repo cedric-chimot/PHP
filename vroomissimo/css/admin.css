@@ -126,6 +126,11 @@ section{
     background-color: var(--bleu);
 }
 
+.white-btn:hover{
+    background-color: var(--blanc);
+    color: var(--noir);
+}
+
 .option-btn{
     background-color: var(--orange);
 }
@@ -299,10 +304,10 @@ section{
 
 .afficher_annonces .box-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 30rem);
+    grid-template-columns: repeat(auto-fit, 30rem 1fr);
     justify-content: center;
     gap: 1.5rem;
-    max-width: 1200px;
+    max-width: 50rem;
     margin:0 auto;
     align-items: flex-start;
 }
@@ -320,11 +325,6 @@ section{
     background-color: var(--blanc);
 }
 
-.afficher_annonces .box-container .box .image{
-    text-align: center;
-    padding: 0.7rem 0;
-}
-
 .afficher_annonces .box-container .box .marque,
 .afficher_annonces .box-container .box .modele,
 .afficher_annonces .box-container .box .prix,
@@ -334,7 +334,7 @@ section{
 .afficher_annonces .box-container .box .description{
     text-align: left;
     padding: 0.7rem 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--noir);
 }
 
@@ -344,7 +344,7 @@ section{
 
 .edit-annonce-form .form{
     min-height: 100vh;
-    /* background-color: rgba(0,0,0,.7); */
+    background-color: rgba(0,0,0,.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -353,11 +353,11 @@ section{
     position: fixed;
     top:0; left:0; 
     z-index: 1200;
-    /* width: 100%; */
+    width: 100%;
 }
 
 .edit-annonce-form form{
-    width: 50rem;
+    width: 45rem;
     padding:2rem;
     text-align: center;
     border-radius: .5rem;
