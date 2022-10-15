@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 15 oct. 2022 à 15:05
+-- Généré le : sam. 15 oct. 2022 à 22:08
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 8.1.10
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `annonce` (
   `num_annonce` int(100) NOT NULL,
+  `idvendeur` int(11) NOT NULL,
   `vendeur` varchar(100) NOT NULL,
   `marque` varchar(255) NOT NULL,
   `modele` varchar(100) NOT NULL,
@@ -48,8 +49,8 @@ CREATE TABLE `annonce` (
 -- Déchargement des données de la table `annonce`
 --
 
-INSERT INTO `annonce` (`num_annonce`, `vendeur`, `marque`, `modele`, `prix`, `km`, `annee_circul`, `annee_production`, `carburant`, `carrosserie`, `etat`, `description`, `contact_vendeur`, `image`) VALUES
-(100, 'Chimot Automobiles', 'Lamborghini', 'Lamborghini Huracàn', 102000, 54123, '06/2019', '2019', 'Essence', 'Coupé', 'Occasion', 'Lamborghini Huracàn, toutes options, parfait état, bleue et orange, pour les amaterus de vitesses', 'Chimot Cedric', 'Lamborghini-Hurcán-STO.jpg');
+INSERT INTO `annonce` (`num_annonce`, `idvendeur`, `vendeur`, `marque`, `modele`, `prix`, `km`, `annee_circul`, `annee_production`, `carburant`, `carrosserie`, `etat`, `description`, `contact_vendeur`, `image`) VALUES
+(100, 4, 'Garage Parker', 'Lamborghini', 'Lamborghini Huracàn', 102000, 54123, '06/2019', '2019', 'Essence', 'Coupé', 'Occasion', 'Lamborghini Huracàn, toutes options, parfait état, bleue et orange, pour les amaterus de vitesses', 'P. Parker', 'Lamborghini-Hurcán-STO.jpg');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,9 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`ID`, `nom`, `adresse`, `cp`, `ville`, `pays`, `email`, `password`, `type_user`) VALUES
 (1, 'Chimot Cedric', 'rue des Héros', '75000', 'Paris', 'France', 'ced02830@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'admin'),
-(2, 'Stark Tony', 'rue des Héros', '85075P', 'Rome', 'Italie', 'stark@hotmail.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'client');
+(2, 'Stark Tony', 'rue des Héros', '85075P', 'Rome', 'Italie', 'stark@hotmail.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'client'),
+(3, 'Rogers Steve', 'rue de la Paix', '58DE45 678Z', 'Berlin', 'Allemagne', 'captain@yahoo.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'client'),
+(4, 'Parker Peter', 'rue de la Paix', 'CP8502', 'Madrid', 'Espagne', 'spidey@gmail.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'admin');
 
 --
 -- Index pour les tables déchargées
@@ -130,7 +133,8 @@ INSERT INTO `utilisateur` (`ID`, `nom`, `adresse`, `cp`, `ville`, `pays`, `email
 -- Index pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  ADD PRIMARY KEY (`num_annonce`);
+  ADD PRIMARY KEY (`num_annonce`),
+  ADD KEY `idvendeur` (`idvendeur`);
 
 --
 -- Index pour la table `message`
@@ -173,11 +177,17 @@ ALTER TABLE `panier`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD CONSTRAINT `annonce_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `utilisateur` (`ID`);
 
 --
 -- Contraintes pour la table `message`
