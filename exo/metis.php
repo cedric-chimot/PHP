@@ -17,6 +17,7 @@ $jour = getdate();
 echo 'En ce ' . $jour['mday'] . " " . $jour['month'] . " " . $jour['year'] .
     ', sur le serveur' . " " . $_SERVER['SERVER_NAME'] . ', il est ' .
     $jour['hours'] . 'h ' . $jour['minutes'] . 'm ' . $jour['seconds'] . 's.';
+
 ?>
 
 <h2 class="mt-2 mb-3">Variables HTTP serveur(getenv())</h2>
@@ -124,6 +125,7 @@ echo 'En ce ' . $jour['mday'] . " " . $jour['month'] . " " . $jour['year'] .
     </tr>
 
 </table>
+
 
 </body>
 
