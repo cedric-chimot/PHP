@@ -1,0 +1,465 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 26 oct. 2022 à 23:53
+-- Version du serveur : 10.4.25-MariaDB
+-- Version de PHP : 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `vroomissimo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `type_user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `nom`, `email`, `password`, `type_user`) VALUES
+(1, 'Chimot Cedric', 'cedom02830@gmail.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonce`
+--
+
+CREATE TABLE `annonce` (
+  `num_annonce` int(100) NOT NULL,
+  `idvendeur` int(11) NOT NULL,
+  `marque` varchar(255) NOT NULL,
+  `modele` varchar(100) NOT NULL,
+  `prix` int(100) NOT NULL,
+  `km` int(100) NOT NULL,
+  `annee_circul` varchar(100) NOT NULL,
+  `annee_production` varchar(100) NOT NULL,
+  `carburant` varchar(100) NOT NULL,
+  `carrosserie` varchar(100) NOT NULL,
+  `etat` varchar(100) NOT NULL,
+  `description` longtext NOT NULL,
+  `contact_vendeur` varchar(100) NOT NULL,
+  `image` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `annonce`
+--
+
+INSERT INTO `annonce` (`num_annonce`, `idvendeur`, `marque`, `modele`, `prix`, `km`, `annee_circul`, `annee_production`, `carburant`, `carrosserie`, `etat`, `description`, `contact_vendeur`, `image`) VALUES
+(100, 3, 'Lamborghini', 'Lamborghini Huracàn', 102000, 54123, '06/2019', '2019', 'Essence', 'Coupé', 'Occasion', 'Lamborghini Huracàn, toutes options, parfait état, bleue et orange, pour les amaterus de vitesses', 'P. Parker', 'Lamborghini-Hurcán-STO.jpg'),
+(101, 3, 'Peugeot', '308 GTI', 23000, 2686, '12-2021', '2021', 'Diesel', 'Berline', 'Occasion', 'Peugeot 308 GTI, boite manuelle, grise, 5 portes, toutes options', 'P. Parker', 'S7-modele--peugeot-308.jpg'),
+(102, 2, 'Audi', 'Audi Q2 TFsi110', 47000, 18000, '08-2021', '2021', 'Diesel', 'Berline', 'Occasion', 'Audi Q2, boite manuelle, Blanche', 'M. Michel', 'audiq2.jpg'),
+(103, 2, 'Porsche', 'Porsche 911 S8', 42599, 14569, '12-2021', '2021', 'Essence', 'Coupé', 'Occasion', 'Porsche 911 toutes options, boite manuelle, tout confort', 'M. Michel', 'S8-modele--porsche-911-type-992.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `client`
+--
+
+CREATE TABLE `client` (
+  `idclient` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `adresse` varchar(100) NOT NULL,
+  `cp` varchar(100) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `pays` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `type_user` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE `commandes` (
+  `id` int(100) NOT NULL,
+  `client_id` int(100) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `telephone` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `paiement` varchar(100) NOT NULL,
+  `adresse` varchar(100) NOT NULL,
+  `cp` varchar(100) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `pays` varchar(100) NOT NULL,
+  `total_articles` varchar(1000) NOT NULL,
+  `prix_total` int(100) NOT NULL,
+  `date_commande` varchar(50) NOT NULL,
+  `statut_paiement` varchar(20) NOT NULL DEFAULT '''en attente''',
+  `vendeur_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `inscrits`
+--
+
+CREATE TABLE `inscrits` (
+  `idinscrit` int(50) NOT NULL,
+  `idadmin` int(50) DEFAULT NULL,
+  `idvendeur` int(50) DEFAULT NULL,
+  `idclient` int(50) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(100) NOT NULL,
+  `idvendeur` int(11) NOT NULL,
+  `num_annonce` int(11) DEFAULT NULL,
+  `num_commande` int(11) DEFAULT NULL,
+  `client_id` int(100) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telephone` varchar(12) NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+CREATE TABLE `panier` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `num_annonce` int(100) DEFAULT NULL,
+  `marque` varchar(100) NOT NULL,
+  `modele` varchar(100) NOT NULL,
+  `prix` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vendeur`
+--
+
+CREATE TABLE `vendeur` (
+  `idvendeur` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `adresse` varchar(100) NOT NULL,
+  `cp` varchar(100) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `pays` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `type_user` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `vendeur`
+--
+
+INSERT INTO `vendeur` (`idvendeur`, `nom`, `adresse`, `cp`, `ville`, `pays`, `email`, `password`, `type_user`) VALUES
+(2, 'Garage Michel', '10 rue des Espions', '75075', 'Paris', 'France', 'gmichel@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'vendeur'),
+(3, 'Parker Peter', 'rue des Héros', '75075', 'Berlin', 'Allemagne', 'spidey@hotmail.fr', '81dc9bdb52d04dc20036dbd8313ed055', 'vendeur');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Index pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD PRIMARY KEY (`num_annonce`),
+  ADD KEY `idvendeur` (`idvendeur`);
+
+--
+-- Index pour la table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`idclient`);
+
+--
+-- Index pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`),
+  ADD KEY `vendeur_id` (`vendeur_id`);
+
+--
+-- Index pour la table `inscrits`
+--
+ALTER TABLE `inscrits`
+  ADD PRIMARY KEY (`idinscrit`),
+  ADD KEY `idadmin` (`idadmin`),
+  ADD KEY `idvendeur` (`idvendeur`),
+  ADD KEY `idclient` (`idclient`);
+
+--
+-- Index pour la table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`),
+  ADD KEY `idvendeur` (`idvendeur`),
+  ADD KEY `num_annonce` (`num_annonce`),
+  ADD KEY `num_commande` (`num_commande`);
+
+--
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`),
+  ADD KEY `num_annonce` (`num_annonce`);
+
+--
+-- Index pour la table `vendeur`
+--
+ALTER TABLE `vendeur`
+  ADD PRIMARY KEY (`idvendeur`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `client`
+--
+ALTER TABLE `client`
+  MODIFY `idclient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `inscrits`
+--
+ALTER TABLE `inscrits`
+  MODIFY `idinscrit` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `panier`
+--
+ALTER TABLE `panier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `vendeur`
+--
+ALTER TABLE `vendeur`
+  MODIFY `idvendeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD CONSTRAINT `annonce_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`idvendeur`);
+
+--
+-- Contraintes pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`),
+  ADD CONSTRAINT `commandes_ibfk_2` FOREIGN KEY (`vendeur_id`) REFERENCES `vendeur` (`idvendeur`);
+
+--
+-- Contraintes pour la table `inscrits`
+--
+ALTER TABLE `inscrits`
+  ADD CONSTRAINT `inscrits_ibfk_1` FOREIGN KEY (`idadmin`) REFERENCES `admin` (`admin_id`),
+  ADD CONSTRAINT `inscrits_ibfk_2` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`idvendeur`),
+  ADD CONSTRAINT `inscrits_ibfk_3` FOREIGN KEY (`idclient`) REFERENCES `client` (`idclient`);
+
+--
+-- Contraintes pour la table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`idvendeur`),
+  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`num_annonce`) REFERENCES `annonce` (`num_annonce`),
+  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`num_commande`) REFERENCES `commandes` (`id`);
+
+--
+-- Contraintes pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD CONSTRAINT `panier_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`),
+  ADD CONSTRAINT `panier_ibfk_2` FOREIGN KEY (`num_annonce`) REFERENCES `annonce` (`num_annonce`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- sql de la table pour PHPmyadmin
+
+-- CREATE TABLE `annonce` (
+--   `num_annonce` int(100) NOT NULL,
+--   `idvendeur` int(11) NOT NULL,
+--   `marque` varchar(255) NOT NULL,
+--   `modele` varchar(100) NOT NULL,
+--   `prix` int(100) NOT NULL,
+--   `km` int(100) NOT NULL,
+--   `annee_circul` varchar(100) NOT NULL,
+--   `annee_production` varchar(100) NOT NULL,
+--   `carburant` varchar(100) NOT NULL,
+--   `carrosserie` varchar(100) NOT NULL,
+--   `etat` varchar(100) NOT NULL,
+--   `description` longtext NOT NULL,
+--   `contact_vendeur` varchar(100) NOT NULL,
+--   `image` varchar(1000) NOT NULL,
+--    PRIMARY KEY (`num_annonce`),
+--    FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`idvendeur`)
+-- );
+
+-- CREATE TABLE `commandes` (
+--   `id` int(100) AUTO_INCREMENT NOT NULL,
+--   `client_id` int(100) NOT NULL,
+--   `nom` varchar(100) NOT NULL,
+--   `telephone` varchar(100) NOT NULL,
+--   `email` varchar(100) NOT NULL,
+--   `paiement` varchar(100) NOT NULL,
+--   `adresse` varchar(100) NOT NULL,
+--   `cp` varchar(100) NOT NULL,
+--   `ville` varchar(100) NOT NULL,
+--   `pays` varchar(100) NOT NULL,
+--   `total_articles` varchar(1000) NOT NULL,
+--   `prix_total` int(100) NOT NULL,
+--   `date_commande` varchar(50) NOT NULL,
+--   `statut_paiement` varchar(20) NOT NULL DEFAULT 'en attente',
+--   `vendeur_id` int(11) NOT NULL,
+--    PRIMARY KEY (`id`),
+--    FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`),
+--    FOREIGN KEY (`vendeur_id`) REFERENCES `vendeur` (`idvendeur`)
+-- );
+
+-- CREATE TABLE `message` (
+--   `id` int(100) NOT NULL AUTO_INCREMENT,
+--   `client_id` int(100) NOT NULL,
+--   `nom` varchar(100) NOT NULL,
+--   `email` varchar(100) NOT NULL,
+--   `telephone` varchar(12) NOT NULL,
+--   `message` varchar(500) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`)
+-- );
+
+-- CREATE TABLE `panier` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `client_id` int(11) NOT NULL,
+--   `num_annonce` int(100) DEFAULT NULL,
+--   `marque` varchar(100) NOT NULL,
+--   `modele` varchar(100) NOT NULL,
+--   `prix` varchar(100) NOT NULL,
+--   `image` varchar(100) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   FOREIGN KEY (`client_id`) REFERENCES `client` (`idclient`),
+--   FOREIGN KEY (`num_annonce`) REFERENCES `annonce` (`num_annonce`)
+-- );
+
+-- CREATE TABLE `client` (
+--   `idclient` int(11) NOT NULL AUTO_INCREMENT,
+--   `nom` varchar(100) NOT NULL,
+--   `adresse` varchar(100) NOT NULL,
+--   `cp` varchar(100) NOT NULL,
+--   `ville` varchar(100) NOT NULL,
+--   `pays` varchar(100) NOT NULL,
+--   `email` varchar(100) NOT NULL,
+--   `password` varchar(100) NOT NULL,
+--   `type_user` varchar(100) NOT NULL,
+--   PRIMARY KEY (`idclient`)
+-- );
+
+-- CREATE TABLE `vendeur` (
+--   `idvendeur` int(11) NOT NULL AUTO_INCREMENT,
+--   `nom` varchar(100) NOT NULL,
+--   `adresse` varchar(100) NOT NULL,
+--   `cp` varchar(100) NOT NULL,
+--   `ville` varchar(100) NOT NULL,
+--   `pays` varchar(100) NOT NULL,
+--   `email` varchar(100) NOT NULL,
+--   `password` varchar(100) NOT NULL,
+--   `type_user` varchar(100) NOT NULL,
+--   PRIMARY KEY (`idvendeur`)
+-- );
+
+-- CREATE TABLE `admin` (
+--   `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+--   `nom` varchar(50) NOT NULL,
+--   `email` varchar(50) NOT NULL,
+--   `password` varchar(50) NOT NULL,
+--   `type_user` varchar(50) NOT NULL,
+--   PRIMARY KEY (`admin_id`)
+-- );
+
+-- CREATE TABLE `inscrits` (
+--   `idinscrit` int(50) NOT NULL AUTO_INCREMENT,
+--   `idadmin` int(50) DEFAULT NULL,
+--   `idvendeur` int(50) DEFAULT NULL,
+--   `idclient` int(50) DEFAULT NULL,
+--   `nom` varchar(50) NOT NULL,
+--   `email` varchar(50) NOT NULL,
+--   `role` varchar(50) NOT NULL,
+--   PRIMARY KEY (`idinscrit`),
+--   FOREIGN KEY (`idadmin`) REFERENCES `admin` (`admin_id`),
+--   FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`idvendeur`),
+--   FOREIGN KEY (`idclient`) REFERENCES `client` (`idclient`)
+-- );
