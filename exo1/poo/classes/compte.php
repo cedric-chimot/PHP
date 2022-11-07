@@ -4,7 +4,7 @@
  * Objet Compte Bancaire
  */
 
-abstract class Compte
+class Compte
 {
     // Propriétés
     
@@ -13,14 +13,14 @@ abstract class Compte
      *
      * @var string
      */
-    protected $titulaire;
+    public $titulaire;
 
     /**
      * Solde du compte
      *
      * @var float
      */
-    protected float $solde;
+    public $solde;
 
     // Méthodes
 
@@ -38,65 +38,6 @@ abstract class Compte
 
         //on attribue le montant à la propriété solde
         $this->solde = $montant;
-    }
-
-    /**
-     * méthode magique pour la conversion en chaine de caractères
-     * @return string
-     */
-
-    public function __toString()
-    {
-        return "Vous visualisez le compte de {$this->titulaire}, le solde est de {$this->solde} €.";
-    }
-
-    //accesseurs
-    /**
-     * Getter de titulaire - retourne la valeur du titulaire du compte
-     * @return string
-     */
-    public function getTitulaire() : string
-    {
-        return $this->titulaire;
-    }
-
-    /**
-     * modifie le nom du titulaire et retourne l'objet
-     * @param string $nom nom du titulaire
-     * @return Compte comppte bancaire
-     */
-
-    public function setTitulaire(string $nom): self
-    {
-        //on vérifie s'il y a un titulaire
-        if($nom != ""){
-            $this->titulaire = $nom;
-        }
-        return $this;
-    }
-
-    /**
-     * retourne le solde du compte
-     * @return float solde du compte
-     */
-
-    public function getSolde(): float
-    {
-        return $this->solde;
-    }
-
-    /**
-     * modifie le solde du compte bancaire
-     * @param float $montant montant du compte
-     * @return Compte compte bancaire
-     */
-
-    public function setSolde(float $montant): self
-    {
-        if($montant >= 0){
-            $this->solde = $montant;
-        }
-        return $this;
     }
 
     /**

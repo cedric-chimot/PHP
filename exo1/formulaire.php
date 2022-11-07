@@ -15,7 +15,7 @@
 
     <h1>Formulaire</h1>
 
-    <form method="post" class="p-3" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <!-- <form method="post" class="p-3" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         Nom : <input type="text" class="mb-3" name="fname" autocomplete="off"><br />
         Prenom : <input type="text" class="mb-3" name="prenom" autocomplete="off"><br />
         Age : <input type="text" class="mb-3" name="age" autocomplete="off"><br />
@@ -89,9 +89,9 @@
                 }
             }
         }
-    ?>
+    ?> -->
 
-    <!-- <form method="post" class="p-3" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <form method="post" class="p-3" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="text" class="mb-3" name="nb1" autocomplete="off"><br />
         <input type="text" class="mb-3" name="nb2" autocomplete="off"><br />
         <input type="submit" value="Executer" name="executer" class="btn btn-success"><br /><br />
@@ -100,20 +100,20 @@
 
     <?php
     
-    // if(isset($_POST['executer'])){
+    if(isset($_POST['executer'])){
 
-    //     $nb1 = (float) $_POST['nb1'];
-    //     $nb2 = (float) $_POST['nb2'];
-    //     $res = $nb1 + $nb2;
+        $nb1 = (float) $_POST['nb1'];
+        $nb2 = (float) $_POST['nb2'];
+        $res = $nb1 + $nb2;
 
-    //     if(empty($nb1) or empty($nb2)){
-    //         echo 'Veuillez saisir une valeur';
-    //     }else{
-    //         echo $res;
-    //     }
-    // }
+        if(empty($nb1) or empty($nb2)){
+            echo 'Veuillez saisir une valeur';
+        }else{
+            echo $res;
+        }
+    }
 
-    ?> -->
+    ?>
 
     <!-- // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
